@@ -1,0 +1,49 @@
+<style>
+  .wrapper {
+    position: relative;
+    height: 200px;
+    width: 150px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+  }
+  .front {
+    background-color: blue;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .back {
+    transition: all 0.5s ease-in-out;
+    background-color: red;
+  }
+</style>
+
+<div class="page">
+  <div class="wrapper">
+    <div id="frontid" class="front" onclick="flip('frontid', 'backid')">
+      <p>FrontSide</p>
+    </div>
+    <div id="backid" class="back" onclick="flip('backid', 'frontid')">
+      <p>BackSide</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("backid").style.transform = "rotateY(180deg)";
+
+  function flip(frontid, backid){
+    let front = document.getElementById(frontid);
+    let back = document.getElementById(backid);
+    front.style.transform = "rotateY(180deg)";
+    back.style.transform = "rotateY(0deg)";
+  }
+
+</script>
